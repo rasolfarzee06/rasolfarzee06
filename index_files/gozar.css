@@ -1,0 +1,112 @@
+/* ---- تنظیمات مودال ---- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  width: 600px;
+  height: 600px;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 17px;
+  background: #dddddd;
+  padding: 5px 10px;
+  border-radius: 60px;
+}
+
+#authFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* واکنش‌گرایی برای عرض کمتر از ۷۶۸ پیکسل */
+@media (max-width: 768px) {
+  .modal-overlay {
+    align-items: flex-end;
+  }
+  .modal-content {
+    width: 100%;
+    padding: 0;
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+/* ---- تنظیمات لودینگ ---- */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 999999;  /* بالاتر از modal-overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* کانتینر اسپینر که ۴ دایره در آن قرار می‌گیرد */
+.spinner {
+  display: flex;
+  gap: 8px; /* فاصله بین دایره‌ها */
+}
+
+/* هر دایره‌ی اسپینر */
+.spinner .dot {
+  width: 18px;                        /* اندازه دایره‌ها */
+  height: 18px;
+  background-color: rgb(63, 64, 121); /* رنگ بنفش تیره */
+  border-radius: 50%;                 /* دایره‌ای شدن گوشه‌ها */
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+/* تأخیر برای هر دایره تا پشت‌سرهم انیمیشن اجرا شود */
+.spinner .dot:nth-child(1) {
+  animation-delay: -0.3s;
+}
+.spinner .dot:nth-child(2) {
+  animation-delay: -0.15s;
+}
+.spinner .dot:nth-child(3) {
+  animation-delay: 0s;
+}
+.spinner .dot:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+/* انیمیشن بونس برای بزرگ و کوچک شدن دایره‌ها */
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* غیرفعال کردن دکمه‌ها */
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
